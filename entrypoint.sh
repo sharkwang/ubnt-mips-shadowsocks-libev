@@ -115,7 +115,7 @@ git submodule init && git submodule update
 ./autogen.sh
 LIBS="-lpthread -lm" \
 LDFLAGS="-Wl,-static -static-libgcc --enable-static"
-./configure --host=$host  --prefix=$prefix_path/chinadns 
+./configure --host=$host  --prefix=$prefix_path/chinadns \
 && make \
 && make install
 
