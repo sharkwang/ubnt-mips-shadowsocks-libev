@@ -8,8 +8,8 @@ shadowsocks_ver=3.2.3
 mbedtls_ver=2.6.0
 # pcre
 pcre_ver=8.41
-# libev
-libev_ver=4.24
+# libev upgraded
+libev_ver=4.25
 # c-ares
 cares_ver=1.13.0
 # set path
@@ -52,7 +52,7 @@ git clone https://github.com/jedisct1/libsodium \
 
 echo -e "$green Installing libev...$end"
 cd
-wget http://dist.schmorp.de/libev/libev-$libev_ver.tar.gz \
+wget https://fossies.org/linux/misc/libev-$libev_ver.tar.gz \
     && tar xvf libev-$libev_ver.tar.gz \
     && cd libev-$libev_ver \
     && ./configure --host=$host --prefix=$prefix_path/libev --disable-shared \
@@ -115,3 +115,4 @@ else
     find $prefix_path/ss-bin/bin ! -name 'ss-nat' -type f | xargs upx
 fi
 
+/bin/bash
