@@ -107,6 +107,18 @@ CFLAGS="-I$prefix_path/libsodium/include \
 && make \
 && make install
 
+echo -e "$green Installing Chinadns...$end"
+cd
+git clone https://github.com/shadowsocks/ChinaDNS.git
+cd ChinaDNS
+git submodule init && git submodule update
+./autogen.sh
+LIBS="-lpthread -lm" \
+LDFLAGS="-Wl,-static -static-libgcc --enable-static"
+./configure --host=$host  --prefix=$prefix_path/chinadns 
+&& make \
+&& make install
+
 if [ $ARCHITECH == "mips64" ]
 then
     find $prefix_path/ss-bin/bin ! -name 'ss-nat' -type f | xargs $strip
